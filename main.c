@@ -66,6 +66,14 @@ void drawLine(int x1, int y1, int x2, int y2)
         y += yInc;
     }
 }
+void drawTriangle(int x1, int y1,
+                  int x2, int y2,
+                  int x3, int y3)
+{
+    drawLine(x1, y1, x2, y2);
+    drawLine(x2, y2, x3, y3);
+    drawLine(x3, y3, x1, y1);
+}
 
 int main()
 {
@@ -75,11 +83,12 @@ int main()
 
     printf("===== 2D Graphics Editor =====\n");
 
-    printf("\n1. Draw Rectangle");
-    printf("\n2. Display Canvas");
-    printf("\n3. Exit");
-    printf("\nEnter choice: ");
-
+printf("\n1. Draw Rectangle");
+printf("\n2. Draw Line");
+printf("\n3. Draw Triangle");
+printf("\n4. Display Canvas");
+printf("\n5. Exit");
+printf("\nEnter choice: ");
     scanf("%d", &choice);
 
     switch(choice)
@@ -90,12 +99,24 @@ int main()
             displayCanvas();
             break;
 
-        case 2:
-            displayCanvas();
-            break;
+    case 2:
+    drawLine(2, 2, 18, 18);
+    printf("\nLine Drawn!\n");
+    displayCanvas();
+    break;
 
-        case 3:
-            return 0;
+    case 3:
+    drawTriangle(10, 2, 5, 10, 15, 10);
+    printf("\nTriangle Drawn!\n");
+    displayCanvas();
+    break;
+
+    case 4:
+    displayCanvas();
+    break;
+
+    case 5:
+    return 0;
 
         default:
             printf("Invalid Choice!\n");
