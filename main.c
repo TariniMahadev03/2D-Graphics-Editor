@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 #define ROWS 20
 #define COLS 40
 
@@ -39,6 +39,31 @@ void drawRectangle(int x, int y, int width, int height)
         {
             canvas[i][j] = '*';
         }
+    }
+}
+void drawLine(int x1, int y1, int x2, int y2)
+{
+    int dx = x2 - x1;
+    int dy = y2 - y1;
+
+    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+
+    float xInc = dx / (float)steps;
+    float yInc = dy / (float)steps;
+
+    float x = x1;
+    float y = y1;
+
+    for(int i = 0; i <= steps; i++)
+    {
+        if((int)x >= 0 && (int)x < COLS &&
+           (int)y >= 0 && (int)y < ROWS)
+        {
+            canvas[(int)y][(int)x] = '*';
+        }
+
+        x += xInc;
+        y += yInc;
     }
 }
 
