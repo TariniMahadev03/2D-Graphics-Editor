@@ -137,17 +137,32 @@ printf("\nEnter choice: ");
 
     switch(choice)
     {
-        case 1:
-            drawRectangle(5, 3, 10, 4);
-            printf("\nRectangle Drawn!\n");
-            displayCanvas();
-            break;
+       case 1:
+{
+    int x, y, width, height;
 
+    printf("Enter x y width height: ");
+    scanf("%d %d %d %d", &x, &y, &width, &height);
+
+    drawRectangle(x, y, width, height);
+
+    printf("\nRectangle Drawn!\n");
+    displayCanvas();
+    break;
+}
     case 2:
-    drawLine(2, 2, 18, 18);
+{
+    int x1, y1, x2, y2;
+
+    printf("Enter x1 y1 x2 y2: ");
+    scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+
+    drawLine(x1, y1, x2, y2);
+
     printf("\nLine Drawn!\n");
     displayCanvas();
     break;
+}
 
     case 3:
     drawTriangle(10, 2, 5, 10, 15, 10);
