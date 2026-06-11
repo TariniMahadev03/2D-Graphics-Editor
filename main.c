@@ -77,80 +77,62 @@ void drawRectangle(int x, int y, int width, int height)
     }
 }
 
-void drawTriangle(int x1, int y1,
-                  int x2, int y2,
-                  int x3, int y3)
+void drawTriangle(int x, int y, int h)
 {
-    drawLine(x1, y1, x2, y2);
-    drawLine(x2, y2, x3, y3);
-    drawLine(x3, y3, x1, y1);
+    int i, j;
+
+    for(i = 0; i < h; i++)
+    {
+        for(j = -i; j <= i; j++)
+        {
+            if(i == h-1 || j == -i || j == i)
+                screen[y+i][x+j] = '*';
+            else
+                screen[y+i][x+j] = '-';
+        }
+    }
 }
 void drawCircle(int xc, int yc, int r)
 {
-    int x = 0;
-    int y = r;
-    int d = 1 - r;
+    int x, y;
 
-    while(x <= y)
+    for(y = -r; y <= r; y++)
     {
-        if(yc+y >= 0 && yc+y < ROWS && xc+x >= 0 && xc+x < COLS)
-            canvas[yc+y][xc+x] = '*';
-
-        if(yc+y >= 0 && yc+y < ROWS && xc-x >= 0 && xc-x < COLS)
-            canvas[yc+y][xc-x] = '*';
-
-        if(yc-y >= 0 && yc-y < ROWS && xc+x >= 0 && xc+x < COLS)
-            canvas[yc-y][xc+x] = '*';
-
-        if(yc-y >= 0 && yc-y < ROWS && xc-x >= 0 && xc-x < COLS)
-            canvas[yc-y][xc-x] = '*';
-
-        if(yc+x >= 0 && yc+x < ROWS && xc+y >= 0 && xc+y < COLS)
-            canvas[yc+x][xc+y] = '*';
-
-        if(yc+x >= 0 && yc+x < ROWS && xc-y >= 0 && xc-y < COLS)
-            canvas[yc+x][xc-y] = '*';
-
-        if(yc-x >= 0 && yc-x < ROWS && xc+y >= 0 && xc+y < COLS)
-            canvas[yc-x][xc+y] = '*';
-
-        if(yc-x >= 0 && yc-x < ROWS && xc-y >= 0 && xc-y < COLS)
-            canvas[yc-x][xc-y] = '*';
-
-        if(d < 0)
-            d += 2 * x + 3;
-        else
+        for(x = -r; x <= r; x++)
         {
-            d += 2 * (x - y) + 5;
-            y--;
-        }
+            int d = x*x + y*y;
 
-        x++;
+            if(d <= r*r)
+            {
+                if(xc+x >= 0 && xc+x < COLS &&
+                   yc+y >= 0 && yc+y < ROWS)
+                {
+                    if(d >= (r-1)*(r-1))
+                        screen[yc+y][xc+x] = '*';
+                    else
+                        screen[yc+y][xc+x] = '-';
+                }
+            }
+        }
     }
 }
-void saveCanvas()
+void deleteArea(int x, int y, int width, int height)
 {
-    FILE *fp = fopen("canvas.txt", "w");
+    int i, j;
 
-    if(fp == NULL)
+    for(i = y; i < y + height; i++)
     {
-        printf("Error saving file!\n");
-        return;
-    }
-
-    for(int i = 0; i < ROWS; i++)
-    {
-        for(int j = 0; j < COLS; j++)
+        for(j = x; j < x + width; j++)
         {
-            fprintf(fp, "%c", canvas[i][j]);
+            if(i >= 0 && i < ROWS &&
+               j >= 0 && j < COLS)
+            {
+                screen[i][j] = ' ';
+            }
         }
-        fprintf(fp, "\n");
     }
-
-    fclose(fp);
-
-    printf("Canvas saved to canvas.txt\n");
 }
+
 
 int main()
 {
