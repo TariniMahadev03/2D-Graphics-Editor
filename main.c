@@ -62,39 +62,21 @@ void drawLine(int x1, int y1, int x2, int y2)
 }
 void drawRectangle(int x, int y, int width, int height)
 {
-    for(int i = y; i < y + height && i < ROWS; i++)
+    int i, j;
+
+    for(i = 0; i < height; i++)
     {
-        for(int j = x; j < x + width && j < COLS; j++)
+        for(j = 0; j < width; j++)
         {
-            canvas[i][j] = '*';
+            if(i == 0 || i == height-1 ||
+               j == 0 || j == width-1)
+                screen[y+i][x+j] = '*';
+            else
+                screen[y+i][x+j] = '-';
         }
     }
 }
-void drawLine(int x1, int y1, int x2, int y2)
-{
-    int dx = x2 - x1;
-    int dy = y2 - y1;
 
-    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-
-    float xInc = dx / (float)steps;
-    float yInc = dy / (float)steps;
-
-    float x = x1;
-    float y = y1;
-
-    for(int i = 0; i <= steps; i++)
-    {
-        if((int)x >= 0 && (int)x < COLS &&
-           (int)y >= 0 && (int)y < ROWS)
-        {
-            canvas[(int)y][(int)x] = '*';
-        }
-
-        x += xInc;
-        y += yInc;
-    }
-}
 void drawTriangle(int x1, int y1,
                   int x2, int y2,
                   int x3, int y3)
