@@ -124,15 +124,19 @@ int main()
 
     initializeCanvas();
 
-    printf("===== 2D Graphics Editor =====\n");
+printf("===== 2D Graphics Editor =====\n");
 
-printf("\n1. Draw Rectangle");
-printf("\n2. Draw Line");
-printf("\n3. Draw Triangle");
-printf("\n4. Draw Circle");
-printf("\n5. Display Canvas");
-printf("\n6. Exit");
-printf("\nEnter choice: ");
+while(1)
+{
+    printf("\n\n1. Draw Rectangle");
+    printf("\n2. Draw Line");
+    printf("\n3. Draw Triangle");
+    printf("\n4. Draw Circle");
+    printf("\n5. Display Canvas");
+    printf("\n6. Clear Canvas");
+    printf("\n7. Exit");
+
+    printf("\nEnter choice: ");
     scanf("%d", &choice);
 
     switch(choice)
@@ -208,6 +212,6 @@ case 7:
         default:
             printf("Invalid Choice!\n");
     }
-
+}
     return 0;
 }
