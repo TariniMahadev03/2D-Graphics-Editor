@@ -117,6 +117,29 @@ void drawCircle(int xc, int yc, int r)
         x++;
     }
 }
+void saveCanvas()
+{
+    FILE *fp = fopen("canvas.txt", "w");
+
+    if(fp == NULL)
+    {
+        printf("Error saving file!\n");
+        return;
+    }
+
+    for(int i = 0; i < ROWS; i++)
+    {
+        for(int j = 0; j < COLS; j++)
+        {
+            fprintf(fp, "%c", canvas[i][j]);
+        }
+        fprintf(fp, "\n");
+    }
+
+    fclose(fp);
+
+    printf("Canvas saved to canvas.txt\n");
+}
 
 int main()
 {
@@ -134,7 +157,8 @@ while(1)
     printf("\n4. Draw Circle");
     printf("\n5. Display Canvas");
     printf("\n6. Clear Canvas");
-    printf("\n7. Exit");
+    printf("\n7. Save Canvas");
+    printf("\n8. Exit");
 
     printf("\nEnter choice: ");
     scanf("%d", &choice);
@@ -208,9 +232,11 @@ case 6:
     break;
 
 case 7:
+    saveCanvas();
+    break;
+
+case 8:
     return 0;
-        default:
-            printf("Invalid Choice!\n");
     }
 }
     return 0;
