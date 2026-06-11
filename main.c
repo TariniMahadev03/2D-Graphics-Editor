@@ -29,7 +29,37 @@ void displayPicture()
         printf("\n");
     }
 }
+void drawLine(int x1, int y1, int x2, int y2)
+{
+    int dx = x2 - x1;
+    int dy = y2 - y1;
 
+    int steps;
+    if(abs(dx) > abs(dy))
+        steps = abs(dx);
+    else
+        steps = abs(dy);
+
+    float xin = dx / (float)steps;
+    float yin = dy / (float)steps;
+
+    float x = x1;
+    float y = y1;
+
+    int i;
+
+    for(i = 0; i <= steps; i++)
+    {
+        if((int)x >= 0 && (int)x < COLS &&
+           (int)y >= 0 && (int)y < ROWS)
+        {
+            screen[(int)y][(int)x] = '*';
+        }
+
+        x += xin;
+        y += yin;
+    }
+}
 void drawRectangle(int x, int y, int width, int height)
 {
     for(int i = y; i < y + height && i < ROWS; i++)
