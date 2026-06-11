@@ -1,9 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define ROWS 20
-#define COLS 40
+#include <math.h>
+#define ROWS 25
+#define COLS 80
 
-char canvas[ROWS][COLS];
+char screen[ROWS][COLS];
+void clearScreen()
+{
+    int i, j;
+    for(i = 0; i < ROWS; i++)
+    {
+        for(j = 0; j < COLS; j++)
+        {
+            screen[i][j] = ' ';
+        }
+    }
+}
 
 /* Fill canvas with underscores */
 void initializeCanvas()
