@@ -1,0 +1,53 @@
+Prompt 1:
+Create a simple menu-driven 2D Graphics Editor in C.
+
+Prompt 2:
+Add a canvas where shapes can be drawn.
+
+Prompt 3:
+Create a funct. to display the canvas on the screen.
+
+Prompt 4:
+Add an option to draw a rectangle.
+
+Prompt 5:
+Add an option to draw a line.
+
+Prompt 6:
+Add an option to draw a triangle.
+
+Prompt 7:
+Add an option to draw a circle.
+
+Prompt 8:
+Add a menu so the user can choose different options.
+
+Prompt 9:
+Check the code and fix any issues in the drawing functions.
+
+Prompt 10:
+Create a separate file to test new changes before adding them to the main program.
+
+Prompt 11:
+Add an option to delete a selected area from the canvas.
+
+Prompt 12:
+Improve the display of the canvas after each operation.
+
+Prompt 13:
+Make sure shapes dont go outside the canvas.
+
+Prompt 14:
+Move the working changes from the test file to the main file.
+
+Prompt 15:
+Delete the extra test file since it is no longer needed.
+
+Prompt 16:
+Add an option to clear the entire canvas.
+
+Prompt 17:
+Review the complete program and fix any remaining errors.
+
+Prompt 18:
+Test all menu options and make final improvements.
