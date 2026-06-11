@@ -198,8 +198,13 @@ case 5:
     break;
 
 case 6:
-    return 0;
+    initializeCanvas();
+    printf("\nCanvas Cleared!\n");
+    displayCanvas();
+    break;
 
+case 7:
+    return 0;
         default:
             printf("Invalid Choice!\n");
     }
