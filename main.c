@@ -138,104 +138,84 @@ int main()
 {
     int choice;
 
-    initializeCanvas();
+    clearScreen();
 
-printf("===== 2D Graphics Editor =====\n");
-
-while(1)
-{
-    printf("\n\n1. Draw Rectangle");
-    printf("\n2. Draw Line");
-    printf("\n3. Draw Triangle");
-    printf("\n4. Draw Circle");
-    printf("\n5. Display Canvas");
-    printf("\n6. Clear Canvas");
-    printf("\n7. Save Canvas");
-    printf("\n8. Exit");
-
-    printf("\nEnter choice: ");
-    scanf("%d", &choice);
-
-    switch(choice)
+    do
     {
-       case 1:
-{
-    int x, y, width, height;
+        printf("\n1. Add Rectangle");
+        printf("\n2. Add Line");
+        printf("\n3. Add Triangle");
+        printf("\n4. Add Circle");
+        printf("\n5. Delete Area");
+        printf("\n6. Display Picture");
+        printf("\n7. Clear Screen");
+        printf("\n8. Exit");
 
-    printf("Enter x y width height: ");
-    scanf("%d %d %d %d", &x, &y, &width, &height);
+        printf("\n\nEnter choice: ");
+        scanf("%d", &choice);
 
-    drawRectangle(x, y, width, height);
+        if(choice == 1)
+        {
+            int x, y, w, h;
 
-    printf("\nRectangle Drawn!\n");
-    displayCanvas();
-    break;
-}
-    case 2:
-{
-    int x1, y1, x2, y2;
+            printf("Enter x y width height: ");
+            scanf("%d%d%d%d", &x, &y, &w, &h);
 
-    printf("Enter x1 y1 x2 y2: ");
-    scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+            drawRectangle(x, y, w, h);
+        }
 
-    drawLine(x1, y1, x2, y2);
+        else if(choice == 2)
+        {
+            int x1, y1, x2, y2;
 
-    printf("\nLine Drawn!\n");
-    displayCanvas();
-    break;
-}
+            printf("Enter x1 y1 x2 y2: ");
+            scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
 
-    case 3:
-{
-    int x1, y1, x2, y2, x3, y3;
+            drawLine(x1, y1, x2, y2);
+        }
 
-    printf("Enter x1 y1 x2 y2 x3 y3: ");
-    scanf("%d %d %d %d %d %d",
-          &x1, &y1, &x2, &y2, &x3, &y3);
+        else if(choice == 3)
+        {
+            int x, y, h;
 
-    drawTriangle(x1, y1, x2, y2, x3, y3);
+            printf("Enter top x y and height: ");
+            scanf("%d%d%d", &x, &y, &h);
 
-    printf("\nTriangle Drawn!\n");
-    displayCanvas();
-    break;
-}
+            drawTriangle(x, y, h);
+        }
 
-    case 4:
-{
-    int xc, yc, r;
+        else if(choice == 4)
+        {
+            int xc, yc, r;
 
-    printf("Enter center x y and radius: ");
-    scanf("%d %d %d", &xc, &yc, &r);
+            printf("Enter center x y and radius: ");
+            scanf("%d%d%d", &xc, &yc, &r);
 
-    drawCircle(xc, yc, r);
+            drawCircle(xc, yc, r);
+        }
 
-    printf("\nCircle Drawn!\n");
-    displayCanvas();
-    break;
-}
+        else if(choice == 5)
+        {
+            int x, y, w, h;
 
-case 5:
-    displayCanvas();
-    break;
+            printf("Enter x y width height to delete: ");
+            scanf("%d%d%d%d", &x, &y, &w, &h);
 
-case 6:
-    initializeCanvas();
-    printf("\nCanvas Cleared!\n");
-    displayCanvas();
-    break;
+            deleteArea(x, y, w, h);
+        }
 
-case 7:
-    saveCanvas();
-    break;
+        else if(choice == 6)
+        {
+            displayPicture();
+        }
 
-case 8:
-    return 0;
+        else if(choice == 7)
+        {
+            clearScreen();
+            printf("Screen cleared!\n");
+        }
 
-default:
-    printf("Invalid Choice!\n");
-    break;
+    } while(choice != 8);
 
-    }
-}
     return 0;
 }
