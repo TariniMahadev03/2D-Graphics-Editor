@@ -165,16 +165,33 @@ printf("\nEnter choice: ");
 }
 
     case 3:
-    drawTriangle(10, 2, 5, 10, 15, 10);
+{
+    int x1, y1, x2, y2, x3, y3;
+
+    printf("Enter x1 y1 x2 y2 x3 y3: ");
+    scanf("%d %d %d %d %d %d",
+          &x1, &y1, &x2, &y2, &x3, &y3);
+
+    drawTriangle(x1, y1, x2, y2, x3, y3);
+
     printf("\nTriangle Drawn!\n");
     displayCanvas();
     break;
+}
 
     case 4:
-    drawCircle(20, 10, 5);
+{
+    int xc, yc, r;
+
+    printf("Enter center x y and radius: ");
+    scanf("%d %d %d", &xc, &yc, &r);
+
+    drawCircle(xc, yc, r);
+
     printf("\nCircle Drawn!\n");
     displayCanvas();
     break;
+}
 
 case 5:
     displayCanvas();
