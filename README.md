@@ -3,10 +3,11 @@
 A menu-driven 2D Graphics Editor implemented in C.
 
 Features planned:
-- Draw Rectangle
-- Draw Circle
-- Draw Line
-- Draw Triangle
-- Delete Objects
-- Modify Objects
-- Display Canvas
+- Add Rectangle
+- Add Line
+- Add Triangle
+- Add Circle
+- Delete Area
+- Display Picture
+- Clear Screen
+- Exit
