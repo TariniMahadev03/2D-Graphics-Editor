@@ -74,6 +74,49 @@ void drawTriangle(int x1, int y1,
     drawLine(x2, y2, x3, y3);
     drawLine(x3, y3, x1, y1);
 }
+void drawCircle(int xc, int yc, int r)
+{
+    int x = 0;
+    int y = r;
+    int d = 1 - r;
+
+    while(x <= y)
+    {
+        if(yc+y >= 0 && yc+y < ROWS && xc+x >= 0 && xc+x < COLS)
+            canvas[yc+y][xc+x] = '*';
+
+        if(yc+y >= 0 && yc+y < ROWS && xc-x >= 0 && xc-x < COLS)
+            canvas[yc+y][xc-x] = '*';
+
+        if(yc-y >= 0 && yc-y < ROWS && xc+x >= 0 && xc+x < COLS)
+            canvas[yc-y][xc+x] = '*';
+
+        if(yc-y >= 0 && yc-y < ROWS && xc-x >= 0 && xc-x < COLS)
+            canvas[yc-y][xc-x] = '*';
+
+        if(yc+x >= 0 && yc+x < ROWS && xc+y >= 0 && xc+y < COLS)
+            canvas[yc+x][xc+y] = '*';
+
+        if(yc+x >= 0 && yc+x < ROWS && xc-y >= 0 && xc-y < COLS)
+            canvas[yc+x][xc-y] = '*';
+
+        if(yc-x >= 0 && yc-x < ROWS && xc+y >= 0 && xc+y < COLS)
+            canvas[yc-x][xc+y] = '*';
+
+        if(yc-x >= 0 && yc-x < ROWS && xc-y >= 0 && xc-y < COLS)
+            canvas[yc-x][xc-y] = '*';
+
+        if(d < 0)
+            d += 2 * x + 3;
+        else
+        {
+            d += 2 * (x - y) + 5;
+            y--;
+        }
+
+        x++;
+    }
+}
 
 int main()
 {
@@ -86,8 +129,9 @@ int main()
 printf("\n1. Draw Rectangle");
 printf("\n2. Draw Line");
 printf("\n3. Draw Triangle");
-printf("\n4. Display Canvas");
-printf("\n5. Exit");
+printf("\n4. Draw Circle");
+printf("\n5. Display Canvas");
+printf("\n6. Exit");
 printf("\nEnter choice: ");
     scanf("%d", &choice);
 
@@ -112,10 +156,16 @@ printf("\nEnter choice: ");
     break;
 
     case 4:
+    drawCircle(20, 10, 5);
+    printf("\nCircle Drawn!\n");
     displayCanvas();
     break;
 
-    case 5:
+case 5:
+    displayCanvas();
+    break;
+
+case 6:
     return 0;
 
         default:
