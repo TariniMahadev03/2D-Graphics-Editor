@@ -237,6 +237,11 @@ case 7:
 
 case 8:
     return 0;
+
+default:
+    printf("Invalid Choice!\n");
+    break;
+
     }
 }
     return 0;
